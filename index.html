@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PROJECT WEBPAGE</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/vis.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">Start/span>
+        <span class="d-none d-lg-block">
+
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">DATA & QUESTIONS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#description">DESCRIPTION OF VISUALIZATION & IMPLEMENTATION</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#insights">INSIGHTS FROM THE VISUALIZATION & CRITICAL DISCUSSION</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+
+      <section class="vis-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+          <h1 class="mb-0">Austin Animal Center
+            <span class="text-primary">Shelter Outcomes</span>
+          </h1>
+          <p><a href="visd3.html" >Web-based visualization using  D3.js.</a></p>
+            <p> Student Id 170024749</p>
+
+          <h2>DATA & QUESTIONS </h2>
+          <p class="mb-5">The visualization is based on the dataset from the Austin Animal Center, that can be found on the following link <a href="https://www.kaggle.com/aaronschlegel/austin-animal-center-shelter-outcomes-and" >https://www.kaggle.com/aaronschlegel/austin-animal-center-shelter-outcomes-and</a>
+<p>The Austin Animal Center is the largest no-kill animal shelter in the United States that provides care and shelter to over 18,000 animals each year and is involved in a range of county, city, and state-wide initiatives for the protection and care of abandoned, at-risk, and surrendered animals.</p>
+<p>The dataset contains shelter outcomes of several types of animals and breeds. The dataset comes in the form of table that is made up of rows and columns, containing 78256 data points with the following attributes:
+age upon outcome, animal id, animal type, breed, color, date of birth, datetime,  monthyear, name, outcome subtype, outcome type,  sex upon outcome.</p>
+<p>They could be grouped in the attribute types:
+  <li>Categorical data:</li>
+<li>Nominal:<li>
+  <p>  animal id, animal type, breed, color, name,  outcome subtype, outcome type,  sex upon outcome.</p>
+<li>Interval:<li> <p>age upon outcome,  date of birth, datetime,  monthyear</p>
+<li>Quantitative: </li> <p>date of birth.</p>
+
+<p>I chose to show the data from several different perspectives and show relations between different data attributes. <p>This visualization helps answering/exploring thee following questions:</p>
+<ol>What are the shelter outcomes between several types of animals?</ol>
+<p>And the second question is: </p> <ol>Age spread between animal types at the time of outcome.</ol>
+</p>
+<p></p>
+        </div>
+      </section>
+
+      <section class="vis-section p-3 p-lg-5 d-flex flex-column" id="description">
+        <div class="my-auto">
+          <h2 class="mb-5">DESCRIPTION & IMPLEMENTATION OF VISUALIZATION</h2>
+
+          <div class="vis-item d-flex flex-column flex-md-row mb-5">
+            <div class="vis-content mr-auto">
+
+              <p>Proceeding from the questions that visualisation helps to explore, I identified  the most important attributes to be represented as the following: animal type, outcome type, age upon outcome. </p>
+<p>I did multiple sketches for ideation process. They were done by hand for idea generations and after that  I used tableau to visualise what the data might look like in practice with the design I chose to implement.
+I wanted to show the data using something simple and easy to read and understand for a variety of audiences. As a result a bar chart and a line chart were chosen for the final visualisation. It  is made of 2 separate views, each exploring one of the questions.</p>
+<p>Original dataset table didn't have the measure values (quantitative attribute) necessary to implement visualisation. Therefore it needed to be transformed beyond its original state in order to create a visual encoding that can solve the problem.</p>
+<p>I did some data manipulation and necessary calculations in separate files (data2.csv for question 1 and L1.json for question 2)  linked to the visualisation html. </p>
+<p>To explore the first question:
+<i>What are the shelter outcomes between several types of animals?</i></p>
+<p>I calculated  the measurements/values from the original dataset for each animal regarding particular outcome. It was done to get quantitative attribute essential for visualisation. Then all animal types were grouped and matched by the quantitative attribute to the outcome. The result is presented in the following table: </p>
+<img src="images/table.png" alt="table"><br></br>
+<p>The relationship between animal types and their outcomes is visualised as a grouped bar chart. The bars are aligned and grouped, makes the comparison easy between different types easy. It encodes the attributes using a line mark with the vertical spatial position channel for the quantitative attribute, and the horizontal spatial position channel for the categorical attribute.</p>
+<p>According to expressiveness & effectiveness the following visual variables (channels) were used for the visualisation of categorical attributes: spatial grouping, colour (hue).</p>
+<p>Quantitative attributes are position on scale, length.</p>
+<p>Value attribute expressed through length and aligned in vertical  position.</p>
+<p>Effectiveness principle is supported through discriminability.</p>
+<p>Animal shelter outcomes are colour coded and thus can be easily  distinguished between one another and similar outcomes are identified by the same colour hue.</p>
+<li>Accuracy:</li>
+<p>The height of the bar conveys a quantitative value for particular attribute. In this case number of animals for particular outcome in a given animal type.  </p>
+<li>Position:</li>
+<p>Vertical spatial position is represented by the number of animals, ranging from minimum value 0 to 22000.
+Horizontal position is type of animal, 5 in total.</p>
+<li>Colour (hue):</li>
+<p>Outcome type is visualised through color channel, and assigned to particular animal on the horizontal position. In total there are 8 outcomes from the dataset, correspondence to 8 different colours.</p>
+<p>The second question:  <i>Age spread between animal types at the time of outcome.</i></p>
+<p>In order to visualise it, the most appropriate attributes from the data set were identified: animal type and age upon outcome.
+I did data calculations to find the quantitative attribute regarding age values for the animal type. The final result was then represented as json object in  separate file. </p>
+<p>The multi line chart visualisation encodes type of animal attribute using lines of different colours and both vertical and horizontal spatial position. The objects are directly next to each other and aligned, allowing  much more precise judgements to be made. The multi line chart provides the overview and lets finding correlations between the attributes.</p>
+<li>Primary key: age</li>
+<li>Secondary key: animal type</li>
+<li> Value: number of animals</li><br>
+<p>According to expressiveness & effectiveness the following visual variables (channels) were used for the visualisation of categorical attributes: spatial region, colour (hue);
+for quantitative attributes: position, length</p>
+<p>
+The categorical attribute of animal type with the four levels of bird, cat, dog, and livestock are encoded with the four hue bins of blue, orange, green and red respectively. </p>
+<p>Age attribute is positioned horizontally on x axis ranging from min to max value according to the dataset. It makes it easy to perceive an order of age position, from left to right.</p>
+<p>Vertical position indicates the number of animals thus quantitative difference between positions can be easily estimated.</p>
+<p>Visualisation enables exploration through interactivity, following the “Overview, zoom and filter, details‐on ‐demand” mantra by Shneiderman.
+As such one can interact with the visualisation by the means of several interactive elements, such as filter, tooltips, zoom.</p>
+<p>Thus on default the visualisation gives an overview of all the data in question,
+including animal types, outcome types and ages and amount of animals according to records. </p>
+<p>Then on demand in the first view the user can use interactivity to access specific details.
+Filter, selecting and highlighting entire group and zoom interactivity are available for the bar graph. Tooltip is supported for both views of visualisation.</p>
+<p>The option selecting particular attribute and fading the rest is presented on the illustration. Selecting particular group makes the bars from the other groups faded and concentrated only on the highlighted element. </p>
+<img src="images/BarSelect.jpg" alt="barchart"><br></br>
+
+<p> The  two views of visualisation are shown close to each other for comprehensive understanding of the data and comparison.
+When the mouse is hovered over the bar graph, one can see additional information about the attribute:  </p>
+<p>When the mouse is hovered over the bar graph, one can see additional information about the attribute with the tooltip </p>
+
+<img src="images/tooltip.jpg" alt="barchartToolTip"><br></br>
+
+<p>Zoom option allows close up of the bar graphs and  allows the animal groups look bigger. In order to increase the size and make it closer it would be need to  double click on the visualisation view or use scroll wheel on the mouse. On the illustration below there is a dog section zoomed in.</p>
+<img src="images/zoom.jpg" alt="barchartZoom"><br></br>
+<p>Below the same view, how it looks with no zoom applied.</p><br>
+<img src="images/tooltipBar.jpg" alt="barchartnoZoom"><br></br>
+<p>Filter option is available based on the legend. The standard view of the legend then changes from to depending on the option selected. In order to achieve it, the mouse must be clicked on the colour box of the legend. </p>
+<img src="images/legend1.jpg" alt="legendall"><br></br>
+<p>The bar chart changes according to what was selected in the legend and doesn't show everything.  </p>
+<img src="images/legendSelect.jpg" alt="legend"><br></br>
+<p>By clicking on the colour box next to the type of the outcome, it will update the bar graph view from all outcomes represented to particular chosen one. On the illustration below only the outcome type Adoption is selected, and we can see that all other outcomes have disappeared from the view.</p>
+<img src="images/BarFilter.jpg" alt="barchartfilter"><br></br>
+<p>I used the visualization techniques from the following sources :</p>
+<li>Grouped bar graph</li>
+<p>https://bl.ocks.org/mbostock/3887051</p>
+<li> Multi Line graph</li>
+<p>http://jsfiddle.net/mQMH3/3/</p>
+<li> d3-tip. technique </li>
+<p>http://bl.ocks.org/Sania1/0fd1e66537bb0a26222ac7161e65ff89/p>
+<li> Selecting the entire group </li>
+<p>I used the callback function for the .on() : method is passed 3 arguments, as described here https://stackoverflow.com/questions/42339628/d3-grouped-bar-chart-selecting-entire-group</p>
+<li>  Bar graph Legend filter</li>
+<p>https://stackoverflow.com/questions/46793632/d3-filtering-bar-chart-with-legend-toggling</p>
+
+<li>Zoom option</li>
+<p>https://coderwall.com/p/psogia/simplest-way-to-add-zoom-pan-on-d3-js</p>
+
+
+            </div>
+
+          </div>
+
+      </section>
+
+
+      <section class="vis-section p-3 p-lg-5 d-flex flex-column" id="insights">
+        <div class="my-auto">
+          <h2 class="mb-5">INSIGHTS FROM THE VISUALIZATION & CRITICAL DISCUSSION</h2>
+<p>People can see several trends in the provided visualisation according to the questions it is based on.
+Visualisation allows to see the total number of animals within the shelter by their outcomes. They can compare  their proportions  by the animal type and see how it relates to the outcome result.</p>
+<p>One doesn't have to do anything to see it as the overview already gives all necessary information.</p>
+
+<img src="images/overviewBar.png" alt="legendall"><br></br>
+<p>First we see that the shelter classifies all the animals it deals with into 5 categories: bird, cat, dog, livestock, and other.</p>
+<p>By looking at the chart, it becomes obvious that adoption is the most common outcome for cats,dogs, birds. It is clear from the bar lengths and the tooltip option gives additional information regarding exact numbers. In order to see the tooltip, just hover the mouse over the bar.</p>
+<img src="images/tooltipBar.jpg" alt="legendall"><br></br>
+<p>Bar chart is perfect for comparing categorical data of animal type and outcome type. It is possible to see:</p>
+<li>How is the proportion of the animals relate to one another?</li>
+<li>What is most likely outcome of particular animal type?</li>
+<li>What animals are in majority in the shelter and what are minority overall and by outcomes?</li>
+<li>How one particular outcome or several ones differ between the animals?</li>
+<p>The user would need to select particular outcome(s) from the legend by clicking on the coloured square matching the type of the outcome to accedes particular details. It works as a filter and  only the outcome people are interested in will be present.</p>
+<p>E.g. I want to see proportion of animals having the outcome Return to owner. I deselect all other outcomes by clicking on them so that only the brown box corresponding to the return to owner is left. It gives the following picture:
+</p>
+<img src="images/returntowoner.png" alt="legendall"><br></br>
+<p>Thus dogs are most likely to get this outcome, followed by cats.  In order do display other outcomes, one has to just re-select them and the view will change back to its original state.  </p>
+<p>The line chart shows how the age changes for particular animal, if there is   any connection between the age of an animal and the outcome, at what age is the animal likely to get some sort of an outcome? Or there is no connection at all?</p>
+<img src="images/age1.jpg" alt="legendall"><br></br>
+<p>
+People can see that the most common age the dog usually has the outcome is at the age of 1 year, tooltip indicates the number of 8749 animals in total.
+While for cats it is 2 months with 5935 animals getting outcome at this age;
+bird -1 year, 176 animals.
+ While livestock is close to 0 and doest provide any trends visible at all. </p>
+<p>From the line chart we can see that as the animal gets older, the likelihood of the outcome decreases dramatically. </p>
+<p>Viewers can see that the most numerous animals in the shelter are dogs, followed by cats. At he same time birds are rare and livestock is close to non-existent.
+</p>
+<h5>Strengths and limitations of the visualization</h5>
+<p> The strength of the visualisation is that it makes it possible to re-connect large amount of data that is hard to visualise or get any idea of just by looking at it.
+It would be impossible to see any trends from the spreadsheet of thousands of lines. However once visualised with essential data points identified and selected, it becomes clear  and data makes more sense. </p>
+<p> There is no information overload and it is quite straightforward to use, only the relevant information is presented on the graphs.
+The variables are mapped according to the channels best suited for quantitative or qualitative data according to the principle of effectiveness and expressiveness.</p>
+<p>Among limitations could be the use of visualisation by colour blind people as some categorical variables are colour coded for distinction. I would add more interactivity for the second chart and some interaction between the two views. However due to the time constraints I didn't succeed in implementing it. </p>
+<p>I am not satisfied with the zoom functionality. Originally I decided to include it as some attributes have very small quantities and therefore are  not visible at all  or have small visibility. E.g. livestock group has very small quantities  that it doesn't even display. The zoom function however didn't help to solve this problem, even if it is set to 100 times increase, the dataset is not visible!</p>
+<p>I thought at first there was a problem with this data category, however experimenting to increase the data set a little bit more it displays. So I came to conclusion that the range of data from small data points in quantities around up to 100 units compared to tens of thousands doesn't go well together. It might  be possible to overcome this limitation by splitting the data into smaller ranges or exploring other techniques.
+ If I were to redesign the visualisation , these would be my main points for consideration.</p>
+
+
+
+
+
+
+
+
+      <section class="vis-section p-3 p-lg-5 d-flex flex-column" id="interests">
+
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/vis.min.js"></script>
+
+  </body>
+
+</html>
